@@ -1,0 +1,64 @@
+{
+    "functions": [
+        {
+            "input_comms": [
+                "REST",
+                "Message Queue",
+                "Events",
+                "DB Polling",
+                "File Polling"
+            ],
+            "output_comms": [
+                "REST",
+                "Message Queue",
+                "Event",
+                "DB",
+                "File"
+            ],
+            "processing_code": "optional core logic does not coexist with Package/Library and function name",
+            "min_instance": 1,
+            "max_instance": 10,
+            "cpu_min": 1,
+            "cpu_max": 10,
+            "library": "moustache",
+            "namespace": "com.moustache",
+            "function": "generate",
+            "external_signature": [
+                "MQ topic name",
+                "REST url pattern",
+                "DB query"
+            ],
+            "input_to_argument_conversion_type": [
+                "Naive (in order)",
+                "IndexMapping",
+                "NamingMapping",
+                "Code"
+            ],
+            "input_to_argument_mapping_code": "requires above set to code or code in processing code section — will probably be Java code that is parsed into code generation object"
+        }
+    ],
+    "ingress_networking": {},
+    "egress_networking": {},
+    "required_services_for_installation": {
+        "service": "Docker container name with namespace, predefined capability (db, MQ, etc.), cloud services"
+    },
+    "credentials": {
+        "credential_system_name": {
+            "API keymap": {
+                "api_url": "key"
+            },
+            "username_password_map": {
+                "service_name": {
+                    "username": "password"
+                }
+            },
+            "external_file_refs": [],
+            "environment_variables": {
+                "environment_variable": "value"
+            },
+            "template_variables": {
+                "template_variable": "value"
+            }
+        }
+    }
+}
