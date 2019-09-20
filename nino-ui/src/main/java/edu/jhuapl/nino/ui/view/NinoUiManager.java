@@ -4,11 +4,11 @@ import edu.jhuapl.nino.model.NinoState;
 import lombok.Data;
 
 @Data
-public abstract class UiManager {
+public abstract class NinoUiManager {
 
 	private NinoState state;
 
-	public UiManager() {
+	public NinoUiManager() {
 		state = new NinoState();
 	}
 }
