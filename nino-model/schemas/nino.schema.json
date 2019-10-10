@@ -20,13 +20,27 @@
             "max_instance": 10,
             "cpu_min": 1,
             "cpu_max": 10,
-            "library": "moustache",
-            "namespace": "com.moustache",
-            "function": "generate",
+            "input_library_name": "moustache",
+            "input_library_namespace": "com.moustache",
+            "input_library_version": "com.moustache",
+            "input_namespace": "com.moustache.parser",
+            "input_function": "generate",
+            "output_library_name": "moustache",
+            "output_library_namespace": "com.moustache",
+            "output_library_version": "com.moustache",
+            "output_namespace": "com.moustache.parser",
+            "output_function": "generate",
+            "output_signature": [
+                "MQ topic name",
+                "REST url pattern",
+                "DB query",
+                "File name"
+            ],
             "external_signature": [
                 "MQ topic name",
                 "REST url pattern",
-                "DB query"
+                "DB query",
+                "File name"
             ],
             "input_to_argument_conversion_type": [
                 "Naive (in order)",
