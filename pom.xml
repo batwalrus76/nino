@@ -15,6 +15,7 @@
         <module>nino-input-parser</module>
         <module>nino-exporter</module>
         <module>nino-generator</module>
+        <module>nino-input-parser-example</module>
     </modules>
     <dependencies>
         <dependency>
