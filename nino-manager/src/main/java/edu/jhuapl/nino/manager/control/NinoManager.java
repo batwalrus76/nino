@@ -1,7 +1,8 @@
 package edu.jhuapl.nino.manager.control;
 
 import edu.jhuapl.nino.exporter.control.NinoExporter;
-import edu.jhuapl.nino.generator.control.NinoGenerator;
+import edu.jhuapl.nino.generator.control.NinoGeneratorController;
+import edu.jhuapl.nino.model.NinoState;
 import edu.jhuapl.nino.ui.view.NinoUiManager;
 import lombok.Data;
 import lombok.extern.java.Log;
@@ -18,7 +19,9 @@ public class NinoManager {
 	private NinoExporter[] ninoExporters;
 
 	@Autowired
-	private NinoGenerator[] ninoGenerators;
+	private NinoGeneratorController ninoGeneratorController;
+
+	private NinoState ninoState;
 
 
 	public static void main(String[] args) {
@@ -35,10 +38,17 @@ public class NinoManager {
 				log.warning("The following InterruptedException encountered while trying to get the NinoState from the NinoUiManager: " + e);
 			}
 		}
+		ninoManager.generate();
+		System.exit(0);
 	}
 
 	public void processNinoState() {
 		if (!ninoUiManager.getState().isProcessing()) {
+			this.ninoState = ninoUiManager.getState();
 		}
+	}
+
+	public void generate(){
+		this.ninoGeneratorController.generate(this.ninoState);
 	}
 }
