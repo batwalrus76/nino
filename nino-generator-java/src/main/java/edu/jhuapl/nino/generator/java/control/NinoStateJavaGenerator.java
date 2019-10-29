@@ -7,6 +7,10 @@ import edu.jhuapl.nino.generator.control.interfaces.variables.NinoVariablesGener
 import edu.jhuapl.nino.generator.java.control.function.NinoFunctionJavaGenerator;
 import edu.jhuapl.nino.model.NinoFunction;
 import edu.jhuapl.nino.model.NinoState;
+import edu.jhuapl.nino.model.enums.Comms;
+import edu.jhuapl.nino.model.enums.ConversionType;
+import edu.jhuapl.nino.model.signature.NinoExternalSignature;
+import edu.jhuapl.nino.model.signature.NinoFileExternalSignature;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -38,5 +42,37 @@ public class NinoStateJavaGenerator implements NinoStateGenerator {
 			generatedFiles.addAll(functionGeneratedFiles);
 		}
 		return generatedFiles;
+	}
+
+	public static void main(String[] args) {
+		NinoStateJavaGenerator ninoStateJavaGenerator = new NinoStateJavaGenerator();
+		NinoState ninoState = new NinoState();
+		NinoFunction ninoFunction = new NinoFunction();
+		ninoFunction.setInputComms(Comms.File);
+		ninoFunction.setOutputComms(Comms.File);
+		ninoFunction.setMinInstance(1);
+		ninoFunction.setMaxInstance(1);
+		ninoFunction.setCpuMinInstance(1);
+		ninoFunction.setCpuMaxInstance(1);
+		ninoFunction.setInputLibraryName("commons-csv");
+		ninoFunction.setInputLibraryNamespace("org.apache.commons");
+		ninoFunction.setInputLibraryVersion("1.5");
+		ninoFunction.setInputNamespace("org.apache.commons.csv");
+		ninoFunction.setInputFunction("csvFileReadWrite");
+		ninoFunction.setOutputLibraryName("commons-csv");
+		ninoFunction.setOutputLibraryNamespace("org.apache.commons");
+		ninoFunction.setOutputLibraryVersion("1.5");
+		ninoFunction.setOutputNamespace("org.apache.commons.csv");
+		ninoFunction.setOutputFunction("writeFile");
+		NinoFileExternalSignature ninoFileExternalSignature = new NinoFileExternalSignature();
+		ninoFileExternalSignature.setVariable("outputFile");
+		ninoFileExternalSignature.setFileName("output.csv");
+		ninoFunction.setExternalSignature(ninoFileExternalSignature);
+		ninoFunction.setInputArgumentConversionType(ConversionType.Naive);
+		List<NinoFunction> ninoFunctions = new ArrayList<>();
+		ninoFunctions.add(ninoFunction);
+		ninoState.setFunctions(ninoFunctions);
+		List<Path> generatedFiles = ninoStateJavaGenerator.generateCode(ninoState);
+		System.exit(0);
 	}
 }
