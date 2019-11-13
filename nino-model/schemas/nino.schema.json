@@ -15,6 +15,24 @@
                 "DB",
                 "File"
             ],
+            "input_data_type": [
+                "CSV",
+                "TXT",
+                "JSON",
+                "YAML"
+            ],
+            "input_data_type": [
+                "CSV",
+                "TXT",
+                "JSON",
+                "YAML"
+            ],
+            "output_data_type": [
+                "CSV",
+                "TXT",
+                "JSON",
+                "YAML"
+            ],
             "processing_code": "optional core logic does not coexist with Package/Library and function name",
             "min_instance": 1,
             "max_instance": 10,

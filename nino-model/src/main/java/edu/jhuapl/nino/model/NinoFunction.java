@@ -2,6 +2,7 @@ package edu.jhuapl.nino.model;
 
 import edu.jhuapl.nino.model.enums.Comms;
 import edu.jhuapl.nino.model.enums.ConversionType;
+import edu.jhuapl.nino.model.enums.DataType;
 import edu.jhuapl.nino.model.signature.NinoExternalSignature;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 public class NinoFunction {
 
 	private Comms inputComms;
+	private DataType inputDataType;
+	private DataType outputDataType;
 	private Comms outputComms;
 	private String processingCode;
 	private int minInstance;
