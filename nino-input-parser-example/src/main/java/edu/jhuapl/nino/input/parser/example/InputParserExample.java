@@ -101,71 +101,72 @@ public class InputParserExample {
 		jsonReader.beginObject(); //{
 		while(jsonReader.hasNext()) {
 			String key = jsonReader.nextName();
-			if (key=="input_comms"){
-				Comms inputComms= Comms.File;
+			if (key == "input_comms") {
+				Comms inputComms = Comms.File;
 				String inputCommsStr = jsonReader.nextString();
 				ninoFunction.setInputComms(inputComms);
-			}else if (key=="output_comms") {
+			} else if (key == "output_comms") {
 				Comms outputComms = Comms.File;
 				String outputCommsStr = jsonReader.nextString();
 				ninoFunction.setOutputComms(outputComms);
-			}else if (key=="min_instance"){
+			} else if (key == "min_instance") {
 				int minInstance = 1;
 				int minInstanceInt = jsonReader.nextInt();
 				ninoFunction.setMinInstance(minInstance);
-			}else if (key=="max_instance"){
+			} else if (key == "max_instance") {
 				int maxInstance = 10;
 				int maxInstanceInt = jsonReader.nextInt();
 				ninoFunction.setMaxInstance(maxInstance);
-			}else if (key=="cpu_min"){
+			} else if (key == "cpu_min") {
 				int cpuMin = 1;
 				int cpuMinInt = jsonReader.nextInt();
 				ninoFunction.setCpuMinInstance(cpuMin);
-			}else if (key=="cpu_max"){
+			} else if (key == "cpu_max") {
 				int cpuMax = 1;
 				int cpuMaxInt = jsonReader.nextInt();
 				ninoFunction.setCpuMaxInstance(cpuMax);
-			}else if (key=="input_library_version"){
+			} else if (key == "input_library_version") {
 				String inputLibraryVersion = "1.7";
 				String inputLibraryVersionString = jsonReader.nextString();
 				ninoFunction.setInputLibraryVersion(inputLibraryVersion);
-			} else if (key=="input_library_group"){
+			} else if (key == "input_library_group") {
 				String inputLibraryGroup = "org.apache.commons";
 				String inputLibraryGroupString = jsonReader.nextString();
 				ninoFunction.setInputLibraryNamespace(inputLibraryGroup);
-			} else if (key=="input_library_name"){
+			} else if (key == "input_library_name") {
 				String inputLibraryName = "commons-csv";
 				String inputLibraryNameString = jsonReader.nextString();
 				ninoFunction.setInputLibraryName(inputLibraryName);
-			} else if (key=="input_namespace"){
+			} else if (key == "input_namespace") {
 				String inputNamespace = "org.apache.commons.csv";
 				String inputNamespaceString = jsonReader.nextString();
 				ninoFunction.setInputLibraryNamespace(inputNamespace);
-			} else if (key=="input_function"){
+			} else if (key == "input_function") {
 				String inputFunction = "readFile";
-				String inputFunctionString=jsonReader.nextString();
+				String inputFunctionString = jsonReader.nextString();
 				ninoFunction.setInputfunction(inputFunction);
-			} else if (key=="output_library_version"){
+			} else if (key == "output_library_version") {
 				String outputLibraryVersion = "1.7";
 				String outputLibraryVersionString = jsonReader.nextString();
 				ninoFunction.setOutputLibraryVersion(outputLibraryVersion);
-			} else if (key=="output_library_group"){
+			} else if (key == "output_library_group") {
 				String outputLibraryGroup = "org.apache.commons";
 				String outputLibraryGroupString = jsonReader.nextString();
 				ninoFunction.setOutputLibraryNamespace(outputLibraryGroup);
-			} else if (key=="output_library_name"){
-				String outputLibraryName= "commons-csv";
+			} else if (key == "output_library_name") {
+				String outputLibraryName = "commons-csv";
 				String outputLibraryNameString = jsonReader.nextString();
-				ninoFunction.setOutputLibraryName(outputLibraryName)		;
-			} else if (key=="output_namespace"){
+				ninoFunction.setOutputLibraryName(outputLibraryName);
+			} else if (key == "output_namespace") {
 				String outputNamespace = "org.apache.commons.csv";
 				String outputNamespaceString = jsonReader.nextString();
 				ninoFunction.setOutputNamespace(outputNamespace);
-			} else if (key=="output_function") {
+			} else if (key == "output_function") {
 				String outputFunction = "writeFile";
 				String outputFunctionString = jsonReader.nextString();
 				ninoFunction.setOutputfunction(outputFunction);
 			}
+		}
 		jsonReader.endObject();
 		return ninoFunction;
 	}
