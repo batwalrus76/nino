@@ -116,11 +116,11 @@ public class InputParserExample {
 			}else if (key=="max_instance"){
 				int maxInstance = 10;
 				int maxInstanceInt = jsonReader.nextInt();
-				ninoFunction.setCpuMaxInstance(maxInstance);
+				ninoFunction.setMaxInstance(maxInstance);
 			}else if (key=="cpu_min"){
 				int cpuMin = 1;
 				int cpuMinInt = jsonReader.nextInt();
-				ninoFunction.setCpuMinInstance(cpuMin);
+				ninoFunction.setMinInstance(cpuMin);
 			}else if (key=="cpu_max"){
 				int cpuMax = 1;
 				int cpuMaxInt = jsonReader.nextInt();
