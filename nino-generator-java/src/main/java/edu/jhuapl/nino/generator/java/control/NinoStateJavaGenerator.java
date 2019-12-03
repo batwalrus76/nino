@@ -9,7 +9,6 @@ import edu.jhuapl.nino.model.NinoFunction;
 import edu.jhuapl.nino.model.NinoState;
 import edu.jhuapl.nino.model.enums.Comms;
 import edu.jhuapl.nino.model.enums.ConversionType;
-import edu.jhuapl.nino.model.signature.NinoExternalSignature;
 import edu.jhuapl.nino.model.signature.NinoFileExternalSignature;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +42,67 @@ public class NinoStateJavaGenerator implements NinoStateGenerator {
 		}
 		return generatedFiles;
 	}
+
+	String inputCSVFileCodeString = "package edu.jhuapl.nino.generator.java.control;\n" +
+			"import com.squareup.javapoet.*;\n" +
+			"import javax.lang.model.element.Modifier;\n" +
+			"import java.io.IOException;\n" +
+			"\n" +
+			"public class CSVFileReaderJP {\n" +
+			"    CodeBlock imports = CodeBlock\n" +
+			"            .builder()\n" +
+			"            .addStatement(\"import java.io.FileReader\")\n" +
+			"            .addStatement(\"import java.io.IOException\")\n" +
+			"            .addStatement(\"import java.util.ArrayList\")\n" +
+			"            .addStatement(\"import java.util.List\")\n" +
+			"            .addStatement(\"import java.util.Scanner\")\n" +
+			"            .build();\n" +
+			"\n" +
+			"    CodeBlock parse = CodeBlock\n" +
+			"            .builder()\n" +
+			"            .beginControlFlow(\"for(String r: data)\")\n" +
+			"            .addStatement(\"list.set(i,r)\")\n" +
+			"            .addStatement(\"i++\")\n" +
+			"            .endControlFlow()\n" +
+			"            .build();\n" +
+			"\n" +
+			"    CodeBlock csvParser = CodeBlock\n" +
+			"            .builder()\n" +
+			"            .beginControlFlow(\"while (input.hasNextLine())\")\n" +
+			"            .addStatement(\"line=input.nextLine()\")\n" +
+			"            .addStatement(\"String[] data = line.split(\\\",\\\")\")\n" +
+			"            .add(parse)\n" +
+			"            .endControlFlow()\n" +
+			"            .build();\n" +
+			"\n" +
+			"    MethodSpec readFile = MethodSpec\n" +
+			"            .methodBuilder(\"readFile\")\n" +
+			"            .addModifiers(Modifier.PUBLIC, Modifier.STATIC)\n" +
+			"            .returns(java.util.List.class<java.lang.String>)\n" +
+			"            .addParameter(java.lang.String.class, \"fileName\")\n" +
+			"            .addException(IOException.class)\n" +
+			"\n" +
+			"            .addStatement(\"List<String> list = new ArrayList<String>()\")\n" +
+			"            .addStatement(\"Scanner input = new Scanner(new FileReader(fileName))\")\n" +
+			"            .addStatement(\"int i=0\")\n" +
+			"            .addStatement(\"String line\")\n" +
+			"            .addCode(csvParser)\n" +
+			"            .addStatement(\"input.close()\")\n" +
+			"            .addStatement(\"return list\")\n" +
+			"            .build();\n" +
+			"\n" +
+			"    TypeSpec CSVReaderFileFinal = TypeSpec\n" +
+			"            .classBuilder(\"NinoCsvReaderWriter\")\n" +
+			"            .addModifiers(Modifier.PUBLIC)\n" +
+			"            .addMethod(readFile)\n" +
+			"            .build();\n" +
+			"\n" +
+			"    JavaFile javaFile = JavaFile\n" +
+			"            .builder(\"edu.jhuapl.nino.csv.example\", CSVReaderFileFinal)\n" +
+			"            .indent(\"    \")\n" +
+			"            .build();\n" +
+			"}\n";
+
 
 	public static void main(String[] args) {
 		NinoStateJavaGenerator ninoStateJavaGenerator = new NinoStateJavaGenerator();
