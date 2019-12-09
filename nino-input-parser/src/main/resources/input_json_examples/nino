@@ -1,0 +1,35 @@
+{
+    "functions":
+    [
+        {
+            "input_comms": "File" ,
+            "output_comms": "File" ,
+            "processing_code": null,
+            "min_instance": 1,
+            "max_instance": 10,
+            "cpu_min": 1,
+            "cpu_max": 10,
+            "input_library_version": "1.7",
+            "input_library_group": "org.apache.commons",
+            "input_library_name": "commons-csv",
+            "input_namespace": "org.apache.commons.csv",
+            "input_function": "readFile",
+            "output_library_version": "1.7",
+            "output_library_group": "org.apache.commons",
+            "output_library_name": "commons-csv",
+            "output_namespace": "org.apache.commons.csv",
+            "output_function": "writeFile",
+            "output_signature": [ {"outputFile": "output.csv"}],
+            "external_signature": [ {"inputFile": "input.csv"}],
+            "input_to_argument_conversion_type": null,
+            "input_to_argument_mapping_code": null
+        }
+    ],
+    "ingress_networking": {},
+    "egress_networking": {},
+    "required_services_for_installation":[],
+    "external_file_refs": ["input.csv", "output.csv"],
+    "environment_variables": null,
+    "template_variables": {},
+    "credentials": null
+}
