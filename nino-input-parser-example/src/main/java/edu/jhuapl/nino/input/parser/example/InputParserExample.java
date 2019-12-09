@@ -113,9 +113,10 @@ public class InputParserExample {
 			}else if (key=="processing_code"){
 				String processingCode = null;
 				try{
-				String processingCodeString = jsonReader.nextString();
-				processingCode = null;
+				processingCode = jsonReader.nextString();
 				} catch(Exception ex) {
+				 System.out.println("Error");
+				} finally {
 				 ninoFunction.setProcessingCode(processingCode);
 				}
 			}else if (key=="min_instance"){
@@ -177,9 +178,9 @@ public class InputParserExample {
 			} else if (key=="output_signature"){
 				jsonReader.beginArray();
 				jsonReader.beginObject();
-				String outputFile = "output.csv";
-				String outputFileString = jsonReader.nextString();
-				ninoFunction.setOutput//What do i set this to? Is this like external signature?(outputFileString);
+				String outputSignatureKey = jsonReader.nextName();
+				String outputFile = jsonReader.nextString();
+				//ninoFunction.setOutput(outputFile);
 				jsonReader.endObject();
 				jsonReader.endArray();
 			} else if (key=="external_signature"){
