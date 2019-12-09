@@ -22,11 +22,13 @@ public class NinoFunction {
 	private String inputLibraryNamespace;
 	private String inputNamespace;
 	private String inputfunction;
+	private String input;
 	private String outputLibraryName;
 	private String outputLibraryVersion;
 	private String outputLibraryNamespace;
 	private String outputNamespace;
 	private String outputfunction;
+	private String output;
 	private NinoExternalSignature externalSignature;
 	private ConversionType inputArgumentConversionType;
 	private String inputArgumentMappingCode;
