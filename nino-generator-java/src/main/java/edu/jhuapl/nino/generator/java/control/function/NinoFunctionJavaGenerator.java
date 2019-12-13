@@ -2,10 +2,13 @@ package edu.jhuapl.nino.generator.java.control.function;
 
 import edu.jhuapl.nino.generator.control.interfaces.function.comms.NinoFunctionInputCommsGenerator;
 import edu.jhuapl.nino.generator.control.interfaces.function.comms.NinoFunctionOutputCommsGenerator;
+import edu.jhuapl.nino.generator.java.control.CSVReaderJP_Updated;
 import edu.jhuapl.nino.model.NinoFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.net.URI;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +51,13 @@ public class NinoFunctionJavaGenerator {
 		List<Path> generatedFiles = new ArrayList<>();
 		// a. This is where you will initially put your own code to read in arbitrary CSV files
 		// b. After that works then you will write JavaPoet code to generate this same code
+
+		//replace with calling CSVFileReaderJP
+		CSVReaderJP_Updated.main(null);
+
+			//run write to & pass to directory (research if makes full path or not)--> not a directory in this project/class path
+				//Path p1 = Paths.get(URI.create("/ricemh1"));
+
 		return generatedFiles;
 	}
 

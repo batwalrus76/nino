@@ -54,8 +54,9 @@ public class CSVFileReaderJP {
             .addMethod(readFile)
             .build();
 
+    //make static function "build" which returns java file
     JavaFile javaFile = JavaFile
             .builder("edu.jhuapl.nino.csv.example", CSVReaderFileFinal)
             .indent("    ")
-            .build();
+            .build(); //cant change at this point
 }
