@@ -104,100 +104,196 @@ public class InputParserExample {
 			String key = jsonReader.nextName();
 			if (key=="input_comms"){
 				Comms inputComms= Comms.File;
-				String inputCommsStr = jsonReader.nextString();
-				ninoFunction.setInputComms(inputComms);
+				try{
+					String inputCommsStr = jsonReader.nextString();
+				} catch(Exception ex) {
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setInputComms(inputComms);
+				}
 			}else if (key=="output_comms") {
-				Comms outputComms = Comms.File;
-				String outputCommsStr = jsonReader.nextString();
-				ninoFunction.setOutputComms(outputComms);
+				Comms outputComms= Comms.File;
+				try{
+					String outputCommsStr = jsonReader.nextString();
+				} catch(Exception ex) {
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setOutputComms(outputComms);
+				}
 			}else if (key=="processing_code"){
 				String processingCode = null;
 				try{
-				processingCode = jsonReader.nextString();
+					processingCode = jsonReader.nextString();
 				} catch(Exception ex) {
-				 System.out.println("Error");
+				 	System.out.println("Error");
 				} finally {
-				 ninoFunction.setProcessingCode(processingCode);
+				 	ninoFunction.setProcessingCode(processingCode);
 				}
 			}else if (key=="min_instance"){
 				int minInstance = 1;
-				int minInstanceInt = jsonReader.nextInt();
-				ninoFunction.setMinInstance(minInstanceInt);
+				try {
+					minInstance = jsonReader.nextInt();
+				} catch(Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setMinInstance(minInstance);
+				}
 			}else if (key=="max_instance"){
 				int maxInstance = 10;
-				int maxInstanceInt = jsonReader.nextInt();
-				ninoFunction.setMaxInstance(maxInstanceInt);
+				try {
+					maxInstance = jsonReader.nextInt();
+				} catch(Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setMaxInstance(maxInstance);
+				}
 			}else if (key=="cpu_min"){
 				int cpuMin = 1;
-				int cpuMinInt = jsonReader.nextInt();
-				ninoFunction.setCpuMinInstance(cpuMinInt);
+				try {
+					cpuMin = jsonReader.nextInt();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setCpuMinInstance(cpuMin);
+				}
 			}else if (key=="cpu_max"){
 				int cpuMax = 1;
-				int cpuMaxInt = jsonReader.nextInt();
-				ninoFunction.setCpuMaxInstance(cpuMaxInt);
+				try {
+					cpuMax = jsonReader.nextInt();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setCpuMaxInstance(cpuMax);
+				}
 			}else if (key=="input_library_version"){
 				String inputLibraryVersion = "1.7";
-				String inputLibraryVersionString = jsonReader.nextString();
-				ninoFunction.setInputLibraryVersion(inputLibraryVersionString);
-			} else if (key=="input_library_group"){
-				String inputLibraryGroup = "org.apache.commons";
-				String inputLibraryGroupString = jsonReader.nextString();
-				ninoFunction.setInputLibraryNamespace(inputLibraryGroupString);
+				try {
+					inputLibraryVersion = jsonReader.nextString();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setInputLibraryVersion(inputLibraryVersion);
+				}
+//			} else if (key=="input_library_group"){
+//				String inputLibraryGroup = "org.apache.commons";
+//				try {
+//					inputLibraryGroup = jsonReader.nextString();
+//				} catch (Exception ex){
+//					System.out.println("Error");
+//				} finally {
+//					ninoFunction.setInputLibraryGroup(inputLibraryGroup);
+//				}
 			} else if (key=="input_library_name"){
 				String inputLibraryName = "commons-csv";
-				String inputLibraryNameString = jsonReader.nextString();
-				ninoFunction.setInputLibraryName(inputLibraryNameString);
+				try {
+					inputLibraryName = jsonReader.nextString();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setInputLibraryName(inputLibraryName);
+				}
 			} else if (key=="input_namespace"){
 				String inputNamespace = "org.apache.commons.csv";
-				String inputNamespaceString = jsonReader.nextString();
-				ninoFunction.setInputLibraryNamespace(inputNamespaceString);
+				try {
+					inputNamespace = jsonReader.nextString();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setInputNamespace(inputNamespace);
+				}
 			} else if (key=="input_function"){
 				String inputFunction = "readFile";
-				String inputFunctionString=jsonReader.nextString();
-				ninoFunction.setInputfunction(inputFunctionString);
+				try {
+					inputFunction = jsonReader.nextString();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setInputfunction(inputFunction);
+				}
 			} else if (key=="output_library_version"){
 				String outputLibraryVersion = "1.7";
-				String outputLibraryVersionString = jsonReader.nextString();
-				ninoFunction.setOutputLibraryVersion(outputLibraryVersionString);
-			} else if (key=="output_library_group"){
-				String outputLibraryGroup = "org.apache.commons";
-				String outputLibraryGroupString = jsonReader.nextString();
-				ninoFunction.setOutputLibraryNamespace(outputLibraryGroup);
+				try {
+					outputLibraryVersion = jsonReader.nextString();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setOutputLibraryVersion(outputLibraryVersion);
+				}
+//			} else if (key=="output_library_group"){
+//				String outputLibraryGroup = "org.apache.commons";
+//				try {
+//					outputLibraryGroup = jsonReader.nextString();
+//				} catch (Exception ex){
+//					System.out.println("Error");
+//				} finally {
+//					ninoFunction.setOutputLibraryNamespace(outputLibraryGroup);
+//				}
 			} else if (key=="output_library_name"){
 				String outputLibraryName= "commons-csv";
-				String outputLibraryNameString = jsonReader.nextString();
-				ninoFunction.setOutputLibraryName(outputLibraryNameString);
+				try {
+					outputLibraryName = jsonReader.nextString();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setOutputLibraryName(outputLibraryName);
+				}
 			} else if (key=="output_namespace"){
 				String outputNamespace = "org.apache.commons.csv";
-				String outputNamespaceString = jsonReader.nextString();
-				ninoFunction.setOutputNamespace(outputNamespaceString);
+				try {
+					outputNamespace = jsonReader.nextString();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setOutputNamespace(outputNamespace);
+				}
 			} else if (key=="output_function") {
 				String outputFunction = "writeFile";
-				String outputFunctionString = jsonReader.nextString();
-				ninoFunction.setOutputfunction(outputFunctionString);
+				try {
+					outputFunction = jsonReader.nextString();
+				} catch (Exception ex){
+					System.out.println("Error");
+				} finally {
+					ninoFunction.setOutputfunction(outputFunction);
+				}
 			} else if (key=="output_signature"){
 				jsonReader.beginArray();
 				jsonReader.beginObject();
 				String outputSignatureKey = jsonReader.nextName();
-				String outputFile = jsonReader.nextString();
-				//ninoFunction.setOutput(outputFile);
+				if (outputSignatureKey=="outputFile"){
+					String outputFile = "output.csv";
+					try {
+						outputFile = jsonReader.nextString();
+					} catch (Exception ex){
+						System.out.println("Error");
+					} finally {
+						ninoFunction.setOutput(outputFile);
+					}
 				jsonReader.endObject();
 				jsonReader.endArray();
 			} else if (key=="external_signature"){
-				jsonReader.beginArray();
-				jsonReader.beginObject();
-				NinoExternalSignature inputFile = //Which External Signature class do I instantiate? NinoExternalSignature is abstract
-				String inputFileString = jsonReader.nextString();
-				ninoFunction.setInput//What do I set this to?(outputFileString);
-				jsonReader.endObject();
-				jsonReader.endArray();
+					jsonReader.beginArray();
+					jsonReader.beginObject();
+					String externalSignatureKey = jsonReader.nextName();
+					if (externalSignatureKey=="inputFile"){
+						String inputFile = "input.csv";
+						try {
+							inputFile = jsonReader.nextString();
+						} catch (Exception ex){
+							System.out.println("Error");
+						} finally {
+							ninoFunction.setInput(inputFile);
+						}
+						jsonReader.endObject();
+						jsonReader.endArray();
 			} else if (key=="input_to_argument_conversion_type"){
 				ConversionType inputToArgumentConversionType = null;//Don't know what to set this to
 				try{
 				String inputToArgumentConversionTypeString = jsonReader.nextString();
 				inputToArgumentConversionType = null;
 				} catch(Exception ex) {
-				 ninoFunction.getInputArgumentConversionType(inputToArgumentConversionType);//How can this not be applied?
+					System.out.println("error");
+				}finally {
+					//ninoFunction.getInputArgumentConversionType(inputToArgumentConversionType);//How can this not be applied?
 				}
 			} else if (key=="input_to_argument_mapping_code"){
 				String inputToArgumentMappingCode = null;//Don't know what to set this to
@@ -205,7 +301,9 @@ public class InputParserExample {
 				String inputToArgumentMappingCodeString = jsonReader.nextString();
 				inputToArgumentMappingCode = null;
 				} catch(Exception ex) {
-				 ninoFunction.getInputArgumentMappingCode(inputToArgumentMappingCodeString);//Why is this an error?
+					System.out.println("error");
+				} finally {
+					//ninoFunction.getInputArgumentMappingCode(inputToArgumentMappingCodeString);//Why is this an error?
 				}
 			}
 		}
