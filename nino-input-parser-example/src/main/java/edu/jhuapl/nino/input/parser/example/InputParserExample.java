@@ -114,7 +114,7 @@ public class InputParserExample {
 					String inputCommsStr = jsonReader.nextString();
 					inputComms = Comms.valueOf(inputCommsStr);
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at input_comms");
 				} finally {
 					ninoFunction.setInputComms(inputComms);
 				}
@@ -125,7 +125,7 @@ public class InputParserExample {
 					String outputCommsStr = jsonReader.nextString();
 					outputComms = Comms.valueOf(outputCommsStr);
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at output_comms");
 				} finally {
 					ninoFunction.setOutputComms(outputComms);
 				}
@@ -140,7 +140,7 @@ public class InputParserExample {
 						processingCode = jsonReader.nextString();
 					}
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at processing code");
 				} finally {
 					ninoFunction.setProcessingCode(processingCode);
 				}
@@ -150,7 +150,7 @@ public class InputParserExample {
 				try {
 					minInstance = jsonReader.nextInt();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at max_instance");
 				} finally {
 					ninoFunction.setMinInstance(minInstance);
 				}
@@ -160,7 +160,7 @@ public class InputParserExample {
 				try {
 					maxInstance = jsonReader.nextInt();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at min_instance");
 				} finally {
 					ninoFunction.setMaxInstance(maxInstance);
 				}
@@ -170,7 +170,7 @@ public class InputParserExample {
 				try {
 					cpuMin = jsonReader.nextInt();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at cpu_min");
 				} finally {
 					ninoFunction.setCpuMinInstance(cpuMin);
 				}
@@ -180,7 +180,7 @@ public class InputParserExample {
 				try {
 					cpuMax = jsonReader.nextInt();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at cpu_max");
 				} finally {
 					ninoFunction.setCpuMaxInstance(cpuMax);
 				}
@@ -190,7 +190,7 @@ public class InputParserExample {
 				try {
 					inputLibraryVersion = jsonReader.nextString();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at input_library_version");
 				} finally {
 					ninoFunction.setInputLibraryVersion(inputLibraryVersion);
 				}
@@ -200,7 +200,7 @@ public class InputParserExample {
 				try {
 					inputLibraryName = jsonReader.nextString();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at input_library_name");
 				} finally {
 					ninoFunction.setInputLibraryName(inputLibraryName);
 				}
@@ -210,7 +210,7 @@ public class InputParserExample {
 				try {
 					inputNamespace = jsonReader.nextString();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at input_namespace");
 				} finally {
 					ninoFunction.setInputNamespace(inputNamespace);
 				}
@@ -220,7 +220,7 @@ public class InputParserExample {
 				try {
 					inputFunction = jsonReader.nextString();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at input_function");
 				} finally {
 					ninoFunction.setInputfunction(inputFunction);
 				}
@@ -230,7 +230,7 @@ public class InputParserExample {
 				try {
 					outputLibraryVersion = jsonReader.nextString();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at output_library_version");
 				} finally {
 					ninoFunction.setOutputLibraryVersion(outputLibraryVersion);
 				}
@@ -240,7 +240,7 @@ public class InputParserExample {
 				try {
 					outputLibraryName = jsonReader.nextString();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at output_library_name");
 				} finally {
 					ninoFunction.setOutputLibraryName(outputLibraryName);
 				}
@@ -250,7 +250,7 @@ public class InputParserExample {
 				try {
 					outputNamespace = jsonReader.nextString();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at output_namespace");
 				} finally {
 					ninoFunction.setOutputNamespace(outputNamespace);
 				}
@@ -260,7 +260,7 @@ public class InputParserExample {
 				try {
 					outputFunction = jsonReader.nextString();
 				} catch (Exception ex) {
-					System.out.println("Error");
+					System.out.println("Error at output_function");
 				} finally {
 					ninoFunction.setOutputfunction(outputFunction);
 				}
@@ -274,7 +274,7 @@ public class InputParserExample {
 					try {
 						outputFile = jsonReader.nextString();
 					} catch (Exception ex) {
-						System.out.println("Error");
+						System.out.println("Error at output_signature:outputFile");
 					} finally {
 						ninoFunction.setOutput(outputFile);
 					}
@@ -291,7 +291,7 @@ public class InputParserExample {
 					try {
 						inputFile = jsonReader.nextString();
 					} catch (Exception ex) {
-						System.out.println("Error");
+						System.out.println("Error at external_signature:inputFile");
 					} finally {
 						ninoFunction.setInput(inputFile);
 					}
@@ -304,23 +304,31 @@ public class InputParserExample {
 				// Also, like above, you need to look at how I used jsonReader.peek() and skipValue() to get passed a null value
 				ConversionType inputToArgumentConversionType = null;//Don't know what to set this to
 				try {
-					String inputToArgumentConversionTypeString = jsonReader.nextString();
-					inputToArgumentConversionType = ConversionType.valueOf(inputToArgumentConversionTypeString);
+					if(jsonReader.peek().equals(JsonToken.NULL)){
+						jsonReader.skipValue();
+					} else {
+						String inputToArgumentConversionTypeString = jsonReader.nextString();
+						inputToArgumentConversionType = ConversionType.valueOf(inputToArgumentConversionTypeString);
+					}
 				} catch (Exception ex) {
-					System.out.println("error");
+					System.out.println("Error at input_to_argument_conversion_type");
 				} finally {
-					ninoFunction.setInputArgumentConversionType(inputToArgumentConversionType);//How can this not be applied?
+					ninoFunction.setInputArgumentConversionType(inputToArgumentConversionType);
 				}
 			}
 			else if (key.equals("input_to_argument_mapping_code")) {
-				String inputToArgumentMappingCode = null;//Don't know what to set this to
+				ConversionType inputToArgumentMappingCode = null;
 				try {
-					String inputToArgumentMappingCodeString = jsonReader.nextString();
-					inputToArgumentMappingCode = null;
+					if(jsonReader.peek().equals(JsonToken.NULL)){
+						jsonReader.skipValue();
+					} else {
+						String inputToArgumentMappingCodeString = jsonReader.nextString();
+						inputToArgumentMappingCode = ConversionType.valueOf(inputToArgumentMappingCodeString);
+					}
 				} catch (Exception ex) {
-					System.out.println("error");
+					System.out.println("Error at input_to_argument_mapping_code");
 				} finally {
-					//ninoFunction.getInputArgumentMappingCode(inputToArgumentMappingCodeString);//Why is this an error?
+//					ninoFunction.getInputArgumentMappingCode(inputToArgumentMappingCode);//Why is this an error?
 				}
 			}
 		}
