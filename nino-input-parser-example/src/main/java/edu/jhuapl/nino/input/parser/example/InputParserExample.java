@@ -133,7 +133,6 @@ public class InputParserExample {
 			else if (key.equals("processing_code")) {
 				String processingCode = null;
 				try {
-					// Shiva: This is how you handle null values when there is a key, replicate elsewhere
 					if(jsonReader.peek().equals(JsonToken.NULL)){
 						jsonReader.skipValue();
 					} else {
@@ -300,9 +299,7 @@ public class InputParserExample {
 				}
 			}
 			else if (key.equals("input_to_argument_conversion_type")) {
-				// Shiva: I think this fixes your problems with setting the value from a string input to the enum
-				// Also, like above, you need to look at how I used jsonReader.peek() and skipValue() to get passed a null value
-				ConversionType inputToArgumentConversionType = null;//Don't know what to set this to
+				ConversionType inputToArgumentConversionType = null;
 				try {
 					if(jsonReader.peek().equals(JsonToken.NULL)){
 						jsonReader.skipValue();
@@ -328,7 +325,7 @@ public class InputParserExample {
 				} catch (Exception ex) {
 					System.out.println("Error at input_to_argument_mapping_code");
 				} finally {
-//					ninoFunction.getInputArgumentMappingCode(inputToArgumentMappingCode);//Why is this an error?
+					ninoFunction.getInputArgumentMappingCode(inputToArgumentMappingCode);
 				}
 			}
 		}
