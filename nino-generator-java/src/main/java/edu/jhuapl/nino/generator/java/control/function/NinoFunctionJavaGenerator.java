@@ -4,7 +4,9 @@ import edu.jhuapl.nino.generator.control.interfaces.function.comms.NinoFunctionI
 import edu.jhuapl.nino.generator.control.interfaces.function.comms.NinoFunctionOutputCommsGenerator;
 import edu.jhuapl.nino.generator.java.control.CSVReaderJP_Updated;
 import edu.jhuapl.nino.model.NinoFunction;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.nio.file.Path;
@@ -12,13 +14,18 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class NinoFunctionJavaGenerator {
 	
-	@Autowired
-	private NinoFunctionInputCommsGenerator ninoFunctionInputCommsGenerator;
-	
-	@Autowired
-	private NinoFunctionOutputCommsGenerator ninoFunctionOutputCommsGenerator;
+//	@Autowired
+//	private NinoFunctionInputCommsGenerator ninoFunctionInputCommsGenerator;
+//
+//	@Autowired
+//	private NinoFunctionOutputCommsGenerator ninoFunctionOutputCommsGenerator;
+
+	public NinoFunctionJavaGenerator(){
+
+	}
 
 	public List<Path> generateCode(NinoFunction ninoFunction){
 		List<Path> generatedFiles = new ArrayList<>();

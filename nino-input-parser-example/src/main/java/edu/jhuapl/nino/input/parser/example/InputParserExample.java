@@ -153,7 +153,7 @@ public class InputParserExample {
 			} else if (key=="input_function"){
 				String inputFunction = "readFile";
 				String inputFunctionString=jsonReader.nextString();
-				ninoFunction.setInputfunction(inputFunctionString);
+				ninoFunction.setInputFunction(inputFunctionString);
 			} else if (key=="output_library_version"){
 				String outputLibraryVersion = "1.7";
 				String outputLibraryVersionString = jsonReader.nextString();
@@ -173,21 +173,21 @@ public class InputParserExample {
 			} else if (key=="output_function") {
 				String outputFunction = "writeFile";
 				String outputFunctionString = jsonReader.nextString();
-				ninoFunction.setOutputfunction(outputFunctionString);
+				ninoFunction.setOutputFunction(outputFunctionString);
 			} else if (key=="output_signature"){
 				jsonReader.beginArray();
 				jsonReader.beginObject();
 				String outputFile = "output.csv";
 				String outputFileString = jsonReader.nextString();
-				ninoFunction.setOutput//What do i set this to? Is this like external signature?(outputFileString);
+				ninoFunction.setOutputNamespace(outputFileString);//What do i set this to? Is this like external signature?
 				jsonReader.endObject();
 				jsonReader.endArray();
 			} else if (key=="external_signature"){
 				jsonReader.beginArray();
 				jsonReader.beginObject();
-				NinoExternalSignature inputFile = //Which External Signature class do I instantiate? NinoExternalSignature is abstract
+				//NinoExternalSignature inputFile = //Which External Signature class do I instantiate? NinoExternalSignature is abstract
 				String inputFileString = jsonReader.nextString();
-				ninoFunction.setInput//What do I set this to?(outputFileString);
+				ninoFunction.setInputFunction(inputFileString);//What do I set this to?
 				jsonReader.endObject();
 				jsonReader.endArray();
 			} else if (key=="input_to_argument_conversion_type"){
@@ -196,7 +196,7 @@ public class InputParserExample {
 				String inputToArgumentConversionTypeString = jsonReader.nextString();
 				inputToArgumentConversionType = null;
 				} catch(Exception ex) {
-				 ninoFunction.getInputArgumentConversionType(inputToArgumentConversionType);//How can this not be applied?
+				 //ninoFunction.getInputArgumentConversionType(inputToArgumentConversionType);//How can this not be applied?
 				}
 			} else if (key=="input_to_argument_mapping_code"){
 				String inputToArgumentMappingCode = null;//Don't know what to set this to
@@ -204,7 +204,7 @@ public class InputParserExample {
 				String inputToArgumentMappingCodeString = jsonReader.nextString();
 				inputToArgumentMappingCode = null;
 				} catch(Exception ex) {
-				 ninoFunction.getInputArgumentMappingCode(inputToArgumentMappingCodeString);//Why is this an error?
+				 //ninoFunction.getInputArgumentMappingCode(inputToArgumentMappingCodeString);//Why is this an error?
 				}
 			}
 		}

@@ -9,6 +9,7 @@ import edu.jhuapl.nino.model.NinoFunction;
 import edu.jhuapl.nino.model.NinoState;
 import edu.jhuapl.nino.model.enums.Comms;
 import edu.jhuapl.nino.model.enums.ConversionType;
+import edu.jhuapl.nino.model.enums.DataType;
 import edu.jhuapl.nino.model.signature.NinoFileExternalSignature;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,18 +22,18 @@ import java.util.List;
 public class NinoStateJavaGenerator implements NinoStateGenerator {
 
 	@Autowired
-	private NinoFunctionJavaGenerator ninoFunctionJavaGenerator;
+	private NinoFunctionJavaGenerator ninoFunctionJavaGenerator = new NinoFunctionJavaGenerator();
 
 	// The following three collections of generators may be needed in the future
 
-	@Autowired
-	private NinoVariablesGenerator[] ninoVariablesGenerators;
-
-	@Autowired
-	private NinoSecurityGenerator[] ninoSecurityGenerators;
-
-	@Autowired
-	private NinoExternalGenerator[] ninoExternalGenerators;
+//	@Autowired
+//	private NinoVariablesGenerator[] ninoVariablesGenerators;
+//
+//	@Autowired
+//	private NinoSecurityGenerator[] ninoSecurityGenerators;
+//
+//	@Autowired
+//	private NinoExternalGenerator[] ninoExternalGenerators;
 
 	public List<Path> generateCode(NinoState ninoState){
 		List<Path> generatedFiles = new ArrayList<>();
@@ -110,6 +111,8 @@ public class NinoStateJavaGenerator implements NinoStateGenerator {
 		NinoFunction ninoFunction = new NinoFunction();
 		ninoFunction.setInputComms(Comms.File);
 		ninoFunction.setOutputComms(Comms.File);
+		ninoFunction.setInputDataType(DataType.CSV);
+        ninoFunction.setOutputDataType(DataType.CSV);
 		ninoFunction.setMinInstance(1);
 		ninoFunction.setMaxInstance(1);
 		ninoFunction.setCpuMinInstance(1);
