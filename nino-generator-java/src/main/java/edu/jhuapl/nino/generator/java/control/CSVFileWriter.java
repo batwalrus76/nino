@@ -43,7 +43,7 @@ public class CSVFileWriter {
             bw.write(String.valueOf(list));
 
        } catch (IOException e) {
-           System.err.format("IOException: %s%n", e);
+           System.err.format("IOException", e);
        }
 
        return null;
