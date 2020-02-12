@@ -54,10 +54,8 @@ public class CSVFileWriterJP {
 
         CodeBlock tryCatchWrite = CodeBlock .builder()
                 .beginControlFlow("try (FileWriter writer = new FileWriter(\"CSVFileWriter\")")
-                .addStatement("")
-                .addStatement("")
-
-
+                .addStatement("BufferedWriter bw = new BufferedWriter(writer))")
+                .addStatement("bw.write(String.valueOf(list))")
                 .nextControlFlow("catch (IOException e)")
                 .addStatement("System.err.format(\"IOException\", e)")
                 .endControlFlow()

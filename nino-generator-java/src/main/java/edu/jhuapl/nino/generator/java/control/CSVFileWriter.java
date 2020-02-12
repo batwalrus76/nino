@@ -12,15 +12,15 @@ public class CSVFileWriter {
        try {
 
            String filename = name;
-           String workingDirectory = System.getProperty("user\\src\\main\\java");
+           //String workingDirectory = System.getProperty("user\\src\\main\\java");
 
-           String absoluteFilePath = "";
-           absoluteFilePath = workingDirectory + File.separator + filename;
+           String absoluteFilePath = "/Users/ricemh1/Desktop";
+           //absoluteFilePath = workingDirectory + File.separator + filename;
 
            System.out.println("Final file path : " + absoluteFilePath);
 
            File file = new File(absoluteFilePath);
-           file.getParentFile().mkdir();
+           boolean mkdir = file.getParentFile().mkdir();
 
            if (file.createNewFile()) {
                System.out.println("File is created!");
