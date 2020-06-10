@@ -1,6 +1,7 @@
 package edu.jhuapl.nino.generator.java.control;
 
 import com.squareup.javapoet.CodeBlock;
+import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 
 import javax.lang.model.element.Modifier;
@@ -69,6 +70,12 @@ public class CSVFileWriterJP {
                 .addCode(tryCatchWrite)
                 .addStatement("return null")
                 .build();
+
+        //make static function "build" which returns java file
+        JavaFile javaFile = JavaFile
+                .builder("edu.jhuapl.nino.csv.example", CSVWriterFileFinal)
+                .indent("    ")
+                .build(); //cant change at this point
 
     }
 }
